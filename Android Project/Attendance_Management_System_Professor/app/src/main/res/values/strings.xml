@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Attendance-Management-System-Student</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">MAV Email</string>
+    <string name="prompt_password">Password</string>
+
+    <string name="enter_email">Enter MAV Email!</string>
+    <string name="enter_password">Enter Password!</string>
+
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up">Register</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_username_or_password">Error: Invalid User Name or Password !</string>
+    <string name="prompt_serverAddress">Server Address</string>
+
+    <string name="title">Attendance Management System</string>
+    <string name="title_activity_mav_sign_up">Registration</string>
+
+
+    <!-- Mav Sign Up strings-->
+    <string name="header_mav_sign_up">Registration</string>
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_mav_email">Mav Email</string>
+    <string name="prompt_device_id">Android Device Id</string>
+
+    <string name="btn_mav_sign_up_text">Sign Up</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_student_main">StudentMainActivity</string>
+    <string name="title_activity_qrcode_generate">QRCodeGenerateActivity</string>
+    <string name="title_activity_professor_main">ProfessorMainActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <!-- Professor Main Activity Strings -->
+    <string-array name="nav_drawer_items">
+        <item>Get Attendance</item>
+        <item>Manual Attendance</item>
+        <item>Reports</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@mipmap/ic_qrcode_reader</item>
+        <item>@mipmap/ic_manual_icon</item>
+        <item>@mipmap/ic_report</item>
+               
+    </array>
+</resources>
