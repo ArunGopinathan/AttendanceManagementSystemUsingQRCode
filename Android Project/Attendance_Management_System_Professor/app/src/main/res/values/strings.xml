@@ -60,4 +60,6 @@
         <item>@mipmap/ic_report</item>
                
     </array>
+    <string name="title_activity_qrreader">QRReaderActivity</string>
+    <string name="title_activity_qrscanner">QRScannerActivity</string>
 </resources>

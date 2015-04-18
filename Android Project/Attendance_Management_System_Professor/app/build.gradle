@@ -20,6 +20,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile files('libs/simple-xml-2.7.1.jar')
+    compile 'com.google.zxing:android-core:3.2.0'
+    compile 'com.google.zxing:android-integration:3.2.0'
 }

@@ -1,10 +1,15 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="false"
+    android:id="@+id/student_scroll_view">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context="com.blogspot.aruncyberspace.attendance_management_system_professor.ProfessorMainActivity">
     <ImageView
         android:id="@+id/imageView"
@@ -53,7 +58,7 @@
                 android:padding="15dp"
                 > </TextView>
 
-            <!--<TextClock
+            <TextClock
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right|center_horizontal"
@@ -65,7 +70,7 @@
                 android:layout_weight="8.14"
                 android:layout_column="1"
                 android:layout_span="7"
-                android:padding="15dp"/>-->
+                android:padding="15dp"/>
 
         </TableRow>
 
@@ -78,7 +83,7 @@
                 android:padding="15dp"
                 android:textSize="15sp"
                 />
-           <!-- <TextClock
+            <TextClock
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right|center_horizontal"
@@ -90,10 +95,38 @@
                 android:layout_weight="8.14"
                 android:layout_column="1"
                 android:layout_span="7"
-                android:padding="20dp"/>-->
+                android:padding="20dp"/>
         </TableRow>
 
 
     </TableLayout>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Get Attendance"
+        android:id="@+id/getAttendanceBtn"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Manual Attendance"
+        android:id="@+id/manualAttendanceBtn"
+        android:layout_below="@+id/getAttendanceBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Reports"
+        android:id="@+id/getReportsBtn"
+        android:layout_below="@+id/manualAttendanceBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+
+
 
 </RelativeLayout>
+</ScrollView>
