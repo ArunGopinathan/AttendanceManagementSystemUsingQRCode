@@ -24,13 +24,13 @@ import java.util.Collection;
 import java.util.Date;
 
 
-
 public class StudentMainActivity extends ActionBarActivity {
     String LOGTAG = "AMS-SMA";
     private ProgressBar mProgressView;
     private Button btnMarkAttendance;
     User user;
     Course currentCourse;
+    String userXML;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +38,9 @@ public class StudentMainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_student_main);
 
         //get the xml from previous intent
-        String userXML = getIntent().getStringExtra("USER_XML");
-
-
         mProgressView = (ProgressBar) findViewById(R.id.login_progress);
-        btnMarkAttendance = (Button)findViewById(R.id.markAttendanceBtn);
-        btnMarkAttendance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //open the QR code Generate Page
-                Intent intent = new Intent(getApplicationContext(), QRCodeGenerateActivity.class);
-                startActivity(intent);
-            }
-        });
-        //parse User XML to User Class
+        userXML = getIntent().getStringExtra("USER_XML");
+
         user = deserializeUserXML(userXML);
         if (user.getFirstName() != "") {
             TextView welcomeTextView;
@@ -64,6 +53,21 @@ public class StudentMainActivity extends ActionBarActivity {
         } else {//close this activity since you don't user information
             this.finish();
         }
+
+
+        btnMarkAttendance = (Button) findViewById(R.id.markAttendanceBtn);
+        btnMarkAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //open the QR code Generate Page
+                Intent intent = new Intent(getApplicationContext(), QRCodeGenerateActivity.class);
+                intent.putExtra("USER_XML",userXML);
+                intent.putExtra("course_id",currentCourse.getCourseId());
+
+                startActivity(intent);
+            }
+        });
+        //parse User XML to User Class
 
     }
 
@@ -126,11 +130,11 @@ public class StudentMainActivity extends ActionBarActivity {
             for (Course c : courses) {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
                 try {
-                    startDate = df.parse(format.format(nowdate)+" "+ c.getCourseStartTime());
-                    endDate = df.parse(format.format(nowdate)+" "+c.getCourseEndTime());
+                    startDate = df.parse(format.format(nowdate) + " " + c.getCourseStartTime());
+                    endDate = df.parse(format.format(nowdate) + " " + c.getCourseEndTime());
 
-                    Log.w("AMS","startDate: "+startDate.toString());
-                    Log.w("AMS","EndDate: "+endDate.toString());
+                    Log.w("AMS", "startDate: " + startDate.toString());
+                    Log.w("AMS", "EndDate: " + endDate.toString());
 
                 } catch (Exception e) {
                     Log.w("AMS", e.toString());
@@ -151,18 +155,17 @@ public class StudentMainActivity extends ActionBarActivity {
             Log.i(LOGTAG, "onPostExecute");
 
             mProgressView.setVisibility(View.GONE);
-               TextView currentCourseTV = (TextView) findViewById(R.id.currentCourse);
-                Button btnMarkAttendance = (Button) findViewById(R.id.markAttendanceBtn);
-                // set the current course if found
-                if (currentCourse != null) {
+            TextView currentCourseTV = (TextView) findViewById(R.id.currentCourse);
+            Button btnMarkAttendance = (Button) findViewById(R.id.markAttendanceBtn);
+            // set the current course if found
+            if (currentCourse != null) {
 
-                    currentCourseTV.setText(currentCourse.getCourseName());
-                    btnMarkAttendance.setEnabled(true);
-                } else {
-                    currentCourseTV.setText("(No Ongoing Course)");
-                    btnMarkAttendance.setEnabled(false);
-                }
-
+                currentCourseTV.setText(currentCourse.getCourseName());
+                btnMarkAttendance.setEnabled(true);
+            } else {
+                currentCourseTV.setText("(No Ongoing Course)");
+                btnMarkAttendance.setEnabled(false);
+            }
 
 
         }

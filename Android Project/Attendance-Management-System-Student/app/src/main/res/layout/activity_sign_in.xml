@@ -21,7 +21,7 @@
                 <ImageView android:id="@+id/loginImage"
                     android:layout_width="match_parent"
                     android:layout_height="139dp" android:src="@mipmap/loginimage"
-                    android:layout_weight="0.15" />
+                    android:layout_weight="0.15"  />
                <!-- <TextView android:id = "@+id/errorMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"  android:textColor="#DC143C" />-->

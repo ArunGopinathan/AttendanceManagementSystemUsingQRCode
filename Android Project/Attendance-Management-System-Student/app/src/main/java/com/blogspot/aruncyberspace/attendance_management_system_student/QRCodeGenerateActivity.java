@@ -27,6 +27,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.EnumMap;
 
 
@@ -37,12 +42,22 @@ public class QRCodeGenerateActivity extends ActionBarActivity {
     private ImageView mQRCodeImageView;
     private TextView mHelpTextView;
     Bitmap generatedImage;
+    String userXML;
+    String courseId;
+    String timeStamp;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_generate);
         //to prevent from taking screenshots
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
+        Date date = new Date();
+        userXML = getIntent().getStringExtra("USER_XML");
+        courseId = getIntent().getStringExtra("course_id");
+        user = deserializeUserXML(userXML);
+        timeStamp = (new Timestamp(date.getTime())).toString();
 
         mProgressView = (ProgressBar) findViewById(R.id.login_progress);
         mQRCodeImageView = (ImageView) findViewById(R.id.qrCodeImage);
@@ -51,6 +66,20 @@ public class QRCodeGenerateActivity extends ActionBarActivity {
         //mHelpTextView = (TextView) findViewById(R.id.helpText);
         AsyncCallWS task = new AsyncCallWS();
         task.execute();
+    }
+    protected User deserializeUserXML(String userXML) {
+        User user = new User();
+        Serializer serializer = new Persister();
+        try {
+
+            user = serializer.read(User.class, userXML);
+
+
+        } catch (Exception ex) {
+            String exceptionstring = ex.toString();
+            exceptionstring.toString();
+        }
+        return user;
     }
 
    private Bitmap generateQRCode(String content)
@@ -92,12 +121,22 @@ public class QRCodeGenerateActivity extends ActionBarActivity {
         @Override
         protected Void doInBackground(String... params) {
            // Log.i(LOGTAG, "doInBackground");
-            WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-            WifiInfo info = manager.getConnectionInfo();
-           // String address = info.getMacAddress();
-            String address = "00:0a:95:9d:68:16";
+            String address = "0";
+            try {
+                WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+                WifiInfo info = manager.getConnectionInfo();
+                 address = info.getMacAddress();
+            }
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
 
-            String content = "1001160219;CSE5324;"+address;
+            }
+           // String address = "00:0a:95:9d:68:16";
+
+           // String content = "1001160219;CSE5324;"+address;
+            String content = user.getUserId()+";"+courseId+";"+address+";"+timeStamp;
+            Log.w("AMS",content);
             generatedImage = generateQRCode(content);
             return null;
         }

@@ -10,43 +10,56 @@ import org.simpleframework.xml.Root;
 public class Course {
 
     @Element
-    private String courseId;
+    private String CourseId;
     @Element
-    private String courseName;
-    @Element
-    private String courseStartTime;
-    @Element
-    private String courseEndTime;
+    private String CourseName;
+    @Element(required = false)
+    private String CourseStartTime;
+    @Element(required = false)
+    private String CourseEndTime;
 
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getCourseStartTime() {
-        return courseStartTime;
-    }
-
-    public void setCourseStartTime(String courseStartTime) {
-        this.courseStartTime = courseStartTime;
-    }
-
-    public String getCourseEndTime() {
-        return courseEndTime;
-    }
-
-    public void setCourseEndTime(String courseEndTime) {
-        this.courseEndTime = courseEndTime;
-    }
-
+    /*
+     * @ElementList private Collection<ManualStudent> Students;
+     */
     public String getCourseId() {
-        return courseId;
+        return CourseId;
     }
 
     public void setCourseId(String courseId) {
-        this.courseId = courseId;
+        CourseId = courseId;
     }
+
+    public String getCourseName() {
+        return CourseName;
+    }
+
+    public void setCourseName(String courseName) {
+        CourseName = courseName;
+    }
+
+    public String getCourseStartTime() {
+        return CourseStartTime;
+    }
+
+    public void setCourseStartTime(String courseStartTime) {
+        CourseStartTime = courseStartTime;
+    }
+
+    public String getCourseEndTime() {
+        return CourseEndTime;
+    }
+
+    public void setCourseEndTime(String courseEndTime) {
+        CourseEndTime = courseEndTime;
+    }
+
+	/*
+     *
+	 *
+	 * public Collection<ManualStudent> getStudents() { return Students; }
+	 *
+	 * public void setStudents(Collection<ManualStudent> students) { Students =
+	 * students; }
+	 */
+
 }

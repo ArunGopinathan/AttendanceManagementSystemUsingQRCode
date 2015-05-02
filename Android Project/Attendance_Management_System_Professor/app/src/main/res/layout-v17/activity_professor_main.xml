@@ -1,132 +1,174 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_scroll_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="false"
-    android:id="@+id/student_scroll_view">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.blogspot.aruncyberspace.attendance_management_system_professor.ProfessorMainActivity">
-    <ImageView
-        android:id="@+id/imageView"
+    android:fillViewport="false">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
-        android:layout_alignParentTop="true"
-        android:layout_weight="0.15"
-        android:src="@mipmap/loginimage" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.blogspot.aruncyberspace.attendance_management_system_professor.ProfessorMainActivity">
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_below="@+id/imageView"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:id="@+id/tableLayout">
-        <TableRow>
-            <TextView android:layout_height="wrap_content" android:textSize="15sp"
-                android:layout_width="wrap_content"
-                android:text="Welcome"
-                android:textColor="#000000"
-                android:padding="20dp"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.15"
+            android:src="@mipmap/loginimage" />
 
-            <EditText
-                android:id="@+id/welcomeText" android:textSize="15sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                android:text="!"
-                android:textColor="#888888"
-                android:padding="20dp">
-            </EditText>
-        </TableRow>
-        <TableRow
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="40dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:id="@+id/prograss_bar"
+                    style="@android:style/Widget.ProgressBar.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/progress"
+                android:padding="90dp"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:gravity="center"
+                android:text="Please Wait..."
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/tableLayout"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_below="@+id/imageView"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="Today is:"
-                android:textSize="15sp"
-                android:padding="15dp"
-                > </TextView>
+            <TableRow>
 
-            <TextClock
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Welcome"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/welcomeText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.5"
+                    android:editable="false"
+                    android:padding="20dp"
+                    android:text="!"
+                    android:textColor="#888888"
+                    android:textSize="15sp"></EditText>
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right|center_horizontal"
-                android:textColor="#888888"
-                android:text="Today is:"
-                android:textSize="15sp"
-                android:editable="false"
-                android:format12Hour="EEEE - MM/dd/yy"
-                android:layout_weight="8.14"
-                android:layout_column="1"
-                android:layout_span="7"
-                android:padding="15dp"/>
+                android:layout_height="fill_parent">
 
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="Today is:"
+                    android:textColor="#000000"
+                    android:textSize="15sp"></TextView>
 
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textColor="#000000"
-                android:text="Time is:"
-                android:padding="15dp"
-                android:textSize="15sp"
-                />
-            <TextClock
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right|center_horizontal"
-                android:text="Today is:"
-                android:textColor="#888888"
-                android:textSize="15sp"
-                android:editable="false"
-                android:format12Hour="hh:mm:ss a"
-                android:layout_weight="8.14"
-                android:layout_column="1"
-                android:layout_span="7"
-                android:padding="20dp"/>
-        </TableRow>
+                <TextClock
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_span="7"
+                    android:layout_weight="8.14"
+                    android:editable="false"
+                    android:format12Hour="EEEE - MM/dd/yy"
+                    android:gravity="right|center_horizontal"
+                    android:padding="15dp"
+                    android:text="Today is:"
+                    android:textColor="#888888"
+                    android:textSize="15sp" />
 
+            </TableRow>
 
-    </TableLayout>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="Get Attendance"
-        android:id="@+id/getAttendanceBtn"
-        android:layout_below="@+id/tableLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="Manual Attendance"
-        android:id="@+id/manualAttendanceBtn"
-        android:layout_below="@+id/getAttendanceBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="Reports"
-        android:id="@+id/getReportsBtn"
-        android:layout_below="@+id/manualAttendanceBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="Time is:"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <TextClock
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_span="7"
+                    android:layout_weight="8.14"
+                    android:editable="false"
+                    android:format12Hour="hh:mm:ss a"
+                    android:gravity="right|center_horizontal"
+                    android:padding="20dp"
+                    android:text="Today is:"
+                    android:textColor="#888888"
+                    android:textSize="15sp" />
+            </TableRow>
 
 
+        </TableLayout>
+
+        <Button
+            android:id="@+id/getAttendanceBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/tableLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Get Attendance" />
+
+        <Button
+            android:id="@+id/manualAttendanceBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/getAttendanceBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Manual Attendance" />
+
+        <Button
+            android:id="@+id/getReportsBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/manualAttendanceBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Reports" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
 </ScrollView>

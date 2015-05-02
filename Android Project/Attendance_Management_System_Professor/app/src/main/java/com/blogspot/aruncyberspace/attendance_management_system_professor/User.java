@@ -1,11 +1,15 @@
-package com.blogspot.aruncyberspace.attendance_management_system_student;
+/**
+ *
+ */
+package com.blogspot.aruncyberspace.attendance_management_system_professor;
 
 /**
- * Created by Arun on 3/23/2015.
+ * @author Arun
+ *
  */
+
 import org.simpleframework.xml.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Root
