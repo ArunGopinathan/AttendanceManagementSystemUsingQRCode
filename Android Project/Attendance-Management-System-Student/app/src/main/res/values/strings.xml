@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AMS Professor</string>
+    <string name="app_name">AMS Student</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -67,4 +67,5 @@
     <string name="title_activity_qrscanner">QRScannerActivity</string>
     <string name="title_activity_manual_attendance">ManualAttendanceActivity</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_view_topics">ViewTopics</string>
 </resources>

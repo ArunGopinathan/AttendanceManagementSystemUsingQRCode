@@ -169,6 +169,15 @@
             android:layout_marginTop="25dp"
             android:text="Reports" />
 
+        <Button
+            android:id="@+id/addTopics"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/getReportsBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Topics" />
+
 
     </RelativeLayout>
 </ScrollView>

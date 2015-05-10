@@ -223,6 +223,7 @@ public class ManualAttendanceActivity extends ActionBarActivity {
 
             //  String url = "http://192.168.0.6:8080/AMSWebServices/AMSService/Authenticate/"+userName+"/"+password;
             String url = URL3;
+
             Log.w(TAG, "url=" + url);
             HttpPost postRequest = new HttpPost(url);
 

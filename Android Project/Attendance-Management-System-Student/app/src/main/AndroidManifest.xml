@@ -49,6 +49,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.blogspot.aruncyberspace.attendance_management_system_student.StudentMainActivity" />
         </activity>
+        <activity
+            android:name=".ViewTopics"
+            android:label="@string/title_activity_view_topics"
+            android:parentActivityName=".StudentMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blogspot.aruncyberspace.attendance_management_system_student.StudentMainActivity" />
+        </activity>
     </application>
 
 </manifest>

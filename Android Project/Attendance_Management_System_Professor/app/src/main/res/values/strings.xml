@@ -73,4 +73,5 @@
     <string name="title_activity_qrscanner">QRScannerActivity</string>
     <string name="title_activity_manual_attendance">ManualAttendanceActivity</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_add_topics">AddTopicsActivity</string>
 </resources>

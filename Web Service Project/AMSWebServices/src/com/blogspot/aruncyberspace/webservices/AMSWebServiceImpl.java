@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -120,6 +121,72 @@ public class AMSWebServiceImpl {
 				+ user.getAndroidDeviceId() + "')";
 		System.out.println(query);
 		return query;
+	}
+
+	@Path("GetTopics/{CourseId}")
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	public String getTopics(@PathParam("CourseId") String CourseId) {
+		String response = "";
+		String query = "select * from topics where CourseId='" + CourseId+"'";
+		MySQLHelper helper = new MySQLHelper();
+		ResultSet rs = helper.executeQueryAndGetResultSet(query);
+		GetTopicsResponse getTopicsResponse = new GetTopicsResponse();
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		try {
+
+			while (rs.next()) {
+
+				String date = rs.getDate("date").toString();
+				String topic = rs.getString("Topics");
+				map.put(date, topic);
+
+			}
+			getTopicsResponse.setTopics(map);
+			Serializer serializer = new Persister();
+			Writer writer = new StringWriter();
+
+			serializer.write(getTopicsResponse, writer);
+			response = writer.toString();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return response;
+	}
+
+	@Path("/AddTopics")
+	@POST
+	@Produces(MediaType.APPLICATION_XML)
+	public String addTopics(String request) {
+		String response = "";
+		AddTopicsRequest addTopicsRequest = new AddTopicsRequest();
+		Serializer serializer = new Persister();
+		try {
+			addTopicsRequest = serializer.read(AddTopicsRequest.class, request);
+			String query = "insert into topics(professorId,courseId,Topics,date)"
+					+ "values('"
+					+ addTopicsRequest.getProfessorId()
+					+ "',"
+					+ "'"
+					+ addTopicsRequest.getCourseId()
+					+ "',"
+					+ "'"
+					+ addTopicsRequest.getTopics()
+					+ "'"
+					+ ",'"
+					+ addTopicsRequest.getDate() + "')";
+
+			System.out.println(query);
+			MySQLHelper helper = new MySQLHelper();
+			helper.executeQuery(query);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return response;
+
 	}
 
 	@Path("/Register")
@@ -385,6 +452,58 @@ public class AMSWebServiceImpl {
 		return response;
 	}
 
+	
+	
+	@Path("/GetStudentEnrolled")
+	@POST
+	@Produces(MediaType.TEXT_XML)
+	public String getStudentEnrolled(String request) {
+		String response = "";
+		System.out.println(request);
+		Serializer serializer = new Persister();
+		Writer writer = new StringWriter();
+		User user = new User();
+		try {
+			user = serializer.read(User.class, request);
+
+			String getProfessorteachesquery = "select c.courseId,c.CourseName from enrolled e inner join courses c "
+					+ "on e.courseId = c.courseId "
+					+ "inner join login l on e.StudentId = l.UserId  "
+					+ "where e.studentId = (select UserId from login where MavEmail ='"
+					+ user.getMavEmail() + "')";
+
+			System.out.println(getProfessorteachesquery);
+			MySQLHelper helper = new MySQLHelper();
+			ResultSet rs = helper
+					.executeQueryAndGetResultSet(getProfessorteachesquery);
+
+			Professor professor = new Professor();
+			professor.setEmailId(user.getMavEmail());
+			Collection<Course> courses = new ArrayList<Course>();
+
+			while (rs.next()) {
+				Course course = new Course();
+				String CourseId = rs.getString("CourseId");
+				String CourseName = rs.getString("CourseName");
+
+				course.setCourseId(CourseId);
+				course.setCourseName(CourseName);
+				courses.add(course);
+			}
+			helper.disposeConnection();
+
+			professor.setCourses(courses);
+
+			serializer.write(professor, writer);
+			response = writer.toString();
+			System.out.println(response);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return response;
+	}
+
 	@Path("/GetDailyReport/{courseId}/{professorId}")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
@@ -418,18 +537,18 @@ public class AMSWebServiceImpl {
 			}
 
 			double percentage = (Double.parseDouble(dailyReport
-					.getTotalAttendanceToday())
-					/ Double.parseDouble(dailyReport.getTotalNumberOfStudents()))*100.0;
+					.getTotalAttendanceToday()) / Double
+					.parseDouble(dailyReport.getTotalNumberOfStudents())) * 100.0;
 
-			
-			dailyReport.setAttendancePercentage(String.format("%.2f",percentage) + "%");
+			dailyReport.setAttendancePercentage(String.format("%.2f",
+					percentage) + "%");
 
 			rr.setDailyReport(dailyReport);
 
 			Serializer serializer = new Persister();
 			Writer writer = new StringWriter();
-			
-			serializer.write(rr,writer);
+
+			serializer.write(rr, writer);
 			response = writer.toString();
 
 		} catch (Exception ex) {

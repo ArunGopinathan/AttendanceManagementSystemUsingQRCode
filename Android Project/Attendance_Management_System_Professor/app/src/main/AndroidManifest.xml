@@ -78,6 +78,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.blogspot.aruncyberspace.attendance_management_system_professor.ProfessorMainActivity" />
         </activity>
+        <activity
+            android:name=".AddTopicsActivity"
+            android:label="@string/title_activity_add_topics"
+            android:parentActivityName=".ProfessorMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blogspot.aruncyberspace.attendance_management_system_professor.ProfessorMainActivity" />
+        </activity>
     </application>
 
 </manifest>

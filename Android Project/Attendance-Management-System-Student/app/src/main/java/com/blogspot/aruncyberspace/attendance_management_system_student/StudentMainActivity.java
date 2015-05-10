@@ -27,7 +27,7 @@ import java.util.Date;
 public class StudentMainActivity extends ActionBarActivity {
     String LOGTAG = "AMS-SMA";
     private ProgressBar mProgressView;
-    private Button btnMarkAttendance;
+    private Button btnMarkAttendance,btnViewTopics;
     User user;
     Course currentCourse;
     String userXML;
@@ -54,7 +54,15 @@ public class StudentMainActivity extends ActionBarActivity {
             this.finish();
         }
 
-
+        btnViewTopics = (Button) findViewById(R.id.ViewTopicsBtn);
+        btnViewTopics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ViewTopics.class);
+                intent.putExtra("USER_XML",userXML);
+               startActivity(intent);
+            }
+        });
         btnMarkAttendance = (Button) findViewById(R.id.markAttendanceBtn);
         btnMarkAttendance.setOnClickListener(new View.OnClickListener() {
             @Override

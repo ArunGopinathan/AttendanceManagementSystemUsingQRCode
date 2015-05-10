@@ -134,6 +134,15 @@
             android:layout_below="@+id/tableLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="View Topics"
+            android:id="@+id/ViewTopicsBtn"
+            android:layout_below="@+id/markAttendanceBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp" />
+
     </RelativeLayout>
 </ScrollView>
 

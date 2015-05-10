@@ -33,7 +33,7 @@ import java.util.Collection;
 
 
 public class ProfessorMainActivity extends ActionBarActivity {
-    Button btnGetAttendance, btnManualAttendance, btnReport;
+    Button btnGetAttendance, btnManualAttendance, btnReport,btnTopics;
     String URL3 = "http://dms.ngrok.io/AMSWebServices/AMSService/AddManualAttendance/";
     TextView welcometxt;
     String qrcodeContent = "";
@@ -60,7 +60,7 @@ AddManualAttendanceRequest addManualAttendanceRequest;
         mprogressView = (ProgressBar) findViewById(R.id.prograss_bar);
         progressText = (TextView) findViewById(R.id.progress);
 
-
+        btnTopics = (Button) findViewById(R.id.addTopics);
         userXML = getIntent().getStringExtra("USER_XML");
         Serializer serializer = new Persister();
         try {
@@ -105,10 +105,18 @@ AddManualAttendanceRequest addManualAttendanceRequest;
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), ManualAttendanceActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
                 intent.putExtra("USER_XML",userXML);
                 startActivity(intent);
 
+            }
+        });
+        btnTopics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),AddTopicsActivity.class);
+                intent.putExtra("USER_XML",userXML);
+                startActivity(intent);
             }
         });
 

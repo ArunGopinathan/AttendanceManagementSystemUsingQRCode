@@ -76,7 +76,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="Total Attendance Today: "
+                    android:text="Total Attendance Today : "
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="Total Students: "
+                    android:text="Total Students  : "
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
@@ -126,7 +126,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="Total Students: "
+                    android:text="Attendance Percentage   : "
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
