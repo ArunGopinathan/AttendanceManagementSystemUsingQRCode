@@ -3,6 +3,9 @@
 Attendance Management System using QR Code is a couple of Android applications to ease the
 attendance management process for the professor as well as the student.
 
+The Presentation with the Screens are available at :
+https://github.com/ArunGopinathan/AttendanceManagementSystemUsingQRCode/blob/master/Attendance%20Management%20System.pptx?raw=true
+
 Student Application:
 -----------------------
 The Student application can generate a QR code which contains the information necessary for marking the 
